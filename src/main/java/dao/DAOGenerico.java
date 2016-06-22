@@ -5,6 +5,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import com.javacodegeeks.snippets.enterprise.hibernate.model.Book;
+
+import modelo.Adocao;
+
 public class DAOGenerico {
 	private static EntityManager entityManager;
 
@@ -48,6 +52,8 @@ public class DAOGenerico {
 		}
 		return query.getResultList();
 	}
+	
+	
 
 	public List listar(Class classe) {
 		Query query = null;
@@ -63,11 +69,11 @@ public class DAOGenerico {
 		return query.getResultList();
 	}
 
-	public Object buscarPorId(Class classe, Long id) {
+	public Object buscarPorId(Class classe, int i) {
 		Object retornando = null;
 		try {
 			entityManager.getTransaction().begin();
-			retornando = entityManager.find(classe, id);
+			retornando = entityManager.find(classe, i);
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();

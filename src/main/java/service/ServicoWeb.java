@@ -25,23 +25,19 @@ import utilitarios.ValidaCPF;
 
 @Path("/WebService")
 @ApplicationPath("/resource")
-public class WebService extends Application {
+public class ServicoWeb extends Application {
 
 	@POST
 	@Path("/add")
-	public Response addUser(@FormParam("name") String name, @FormParam("age") int age,@FormParam("cpf")String cpf) {
+	public String addUser(@FormParam("name") String name, @FormParam("age") int age) {
 
 		// return Response.status(200)
 		// .entity("addUser is called, name : " + name + ", age : " + age)
 		// .build();{
-		if(ValidaCPF.isCPF(cpf)){
-			return Response.status(200).build();
-		}else{
-			return Response.status(10).build();
+		System.out.println("Nome:" +name);
+		return name;
 		}
-		/*System.out.println("nome: " + name);*/
-		/*return null;*/
-	}
+	
 
 	@POST
 	@Path("/addForm")
@@ -50,40 +46,44 @@ public class WebService extends Application {
 		return "addUser is called, name : " + name + ", age : " + age;
 
 	}
+//	http://172.17.244.150:8080/ServicoWeb/resource/WebService/addAdocao
+//	http://localhost:8080/ServicoWeb/resource/WebService/addAdocao
 
 	@POST
 	@Path("/addAdocao")
-	public Response addAdocao(@FormParam("nome") String nome, @FormParam("cpf") String cpf,
-			@FormParam("descricao") String descricaoAnimal, @FormParam("informacoes") String informacoesContato,
-			@FormParam("porte") String porte, @FormParam("especie") String especie, @FormParam("sexo") String sexo,
-			@FormParam("idade") Integer idade, @FormParam("pelagem") String pelagem, @FormParam("raca") String raca,
-			@FormParam("link") String linkVideo, @FormParam("castrado") Boolean castrado,
-			@FormParam("dataCadastro") Date dataCadastro, @FormParam("cidade") String cidade) {
+	public Response addAdocao(@FormParam("nomeAnunciante") String nomeAnunciante, @FormParam("telefone") String telefone,
+			@FormParam("cidade") String cidade, @FormParam("estado") String estado,@FormParam("observacao")String observacao,
+			@FormParam("nomeAnimal") String nomeAnimal, @FormParam("especie") String especie, @FormParam("raca") String raca,
+			@FormParam("pelagem") String pelagem,@FormParam("idade")Integer idade,@FormParam("portePeso")String portePeso,
+			@FormParam("sexo")String sexo ,@FormParam("castracao")Boolean castracao, @FormParam("descricaoAnimal") String descricaoAnimal) {
 		
 		
 		Adocao adocao = new Adocao();
-		adocao.setNome(nome);
-		adocao.setCpf(cpf);
-		adocao.setDescricaoAnimal(descricaoAnimal);
-		adocao.setInformacoesContato(informacoesContato);
-		adocao.setPorte(porte);
-		adocao.setEspecie(especie);
-		adocao.setSexo(sexo);
-		adocao.setIdade(idade);
-		adocao.setPelagem(pelagem);
-		adocao.setRaca(raca);
-		adocao.setLinkVideo(linkVideo);
-		adocao.setCastrado(castrado);
-		adocao.setDataCadastro(dataCadastro);
+		adocao.setNomeAnunciante(nomeAnunciante);
+		adocao.setTelefone(telefone);
 		adocao.setCidade(cidade);
+		adocao.setEstado(estado);
+		adocao.setObservacao(observacao);
+		adocao.setNomeAnimal(nomeAnimal);
+		adocao.setEspecie(especie);
+		adocao.setRaca(raca);
+		adocao.setPelagem(pelagem);
+		adocao.setIdade(idade);
+		adocao.setPortePeso(portePeso);
+		adocao.setSexo(sexo);
+		adocao.setCastracao(castracao);
+		adocao.setDescricaoAnimal(descricaoAnimal);
 		
-		
+			
 		DAOGenerico dao = new DAOGenerico();
 		dao.inserir(adocao);
 
 		return Response.status(200).entity("Inserido com sucesso!").build();
 	}
 	
+	
+//	http://172.17.244.150:8080//ServicoWeb/resource/WebService/addMausTratos
+//	http://localhost:8080/ServicoWeb/resource/WebService/addMausTratos
 	@POST
 	@Path("/addMausTratos")
 	public Response addMausTratos(@FormParam("descricaoAnimal") String descricaoAnimal,@FormParam("informacoesContato") String informacoesContato,
