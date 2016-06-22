@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import com.javacodegeeks.snippets.enterprise.hibernate.model.Book;
+
 
 import modelo.Adocao;
 
