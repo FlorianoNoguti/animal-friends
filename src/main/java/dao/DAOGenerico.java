@@ -7,7 +7,12 @@ import javax.persistence.Query;
 
 
 
-import modelo.Adocao;
+
+
+
+
+
+
 
 public class DAOGenerico {
 	private static EntityManager entityManager;
@@ -18,6 +23,7 @@ public class DAOGenerico {
 			entityManager.getTransaction().begin();
 			entityManager.persist(objeto);
 			entityManager.getTransaction().commit();
+			
 
 		} catch (Exception e) {
 			entityManager.getTransaction().rollback();
@@ -54,6 +60,8 @@ public class DAOGenerico {
 	}
 	
 	
+	
+	
 
 	public List listar(Class classe) {
 		Query query = null;
@@ -82,5 +90,18 @@ public class DAOGenerico {
 
 		return retornando;
 	}
-
+	
+	public void deletar(Long id) {
+	
+		try {
+			entityManager = ConexaoBanco.getConexao().getEm();
+			entityManager.getTransaction().begin();
+			entityManager.remove(id);
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+		}
+	}
+	
 }

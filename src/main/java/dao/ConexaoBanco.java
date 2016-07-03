@@ -1,22 +1,14 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-
-import org.hibernate.internal.SessionFactoryImpl;
-import org.hibernate.jpa.internal.EntityManagerImpl;
 
 public class ConexaoBanco {
 	private static ConexaoBanco conexao;
 	private EntityManager em;
 
 	public ConexaoBanco() {
-		em = Persistence.createEntityManagerFactory("ServicoWebAnimalFriendsPU").createEntityManager();
+		em = Persistence.createEntityManagerFactory("ServicoWebPU").createEntityManager();
 	}
 
 	public synchronized static ConexaoBanco getConexao() {

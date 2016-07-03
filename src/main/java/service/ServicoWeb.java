@@ -1,7 +1,6 @@
 package service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.ApplicationPath;
@@ -63,7 +62,7 @@ public class ServicoWeb extends Application {
 		adocao.setTelefone(telefone);
 		adocao.setCidade(cidade);
 		adocao.setEstado(estado);
-		adocao.setObservacao(observacao);
+		/*adocao.setObservacao(observacao);
 		adocao.setNomeAnimal(nomeAnimal);
 		adocao.setEspecie(especie);
 		adocao.setRaca(raca);
@@ -72,7 +71,7 @@ public class ServicoWeb extends Application {
 		adocao.setPortePeso(portePeso);
 		adocao.setSexo(sexo);
 		adocao.setCastracao(castracao);
-		adocao.setDescricaoAnimal(descricaoAnimal);
+		adocao.setDescricaoAnimal(descricaoAnimal);*/
 		
 			
 		DAOGenerico dao = new DAOGenerico();
@@ -138,12 +137,14 @@ public class ServicoWeb extends Application {
 
 	}
 
-	// http://localhost:8080/ServicoWeb/resource/WebService/hello
+	// http://localhost:8080/ServicoWebAnimalFriends/resource/WebService/hello
 	@GET
 	@Path("/hello")
 	public String getHello() {
 		return "Hello Web Service";
 	}
+	
+	
 
 	// http://localhost:8080/ServicoWeb/resource/WebService/msg?nome=Maria
 	@GET

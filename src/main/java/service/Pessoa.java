@@ -1,7 +1,5 @@
 package service;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 
 public class Pessoa {
 	private String nome;

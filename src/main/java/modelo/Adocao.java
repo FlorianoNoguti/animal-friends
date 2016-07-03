@@ -1,7 +1,6 @@
 package modelo;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -35,16 +34,21 @@ public class Adocao implements Serializable {
 	private String portePeso;
 	private String sexo;
 	private Boolean castracao;
-	private List<Integer> imagens;
 	private String descricaoAnimal;
 	
-	public Adocao(String nomeAnunciante,String telefone,String nomeAnimal,String raca){
-		this.nomeAnunciante = nomeAnunciante;
-		this.telefone = telefone;
-		this.nomeAnimal = nomeAnimal;
-		this.raca = raca;
+	public Adocao(){
+		
 	}
 	
+	
+	
+	public Adocao(String nomeAnunciante,String telefone,String cidade,String estado){
+		this.nomeAnunciante = nomeAnunciante;
+		this.telefone = telefone;
+		this.cidade = cidade;
+		this.estado = estado;
+	}
+
 	
 	public Long getId() {
 		return id;
@@ -128,12 +132,7 @@ public class Adocao implements Serializable {
 	public void setCastracao(Boolean castracao) {
 		this.castracao = castracao;
 	}
-	public List<Integer> getImagens() {
-		return imagens;
-	}
-	public void setImagens(List<Integer> imagens) {
-		this.imagens = imagens;
-	}
+
 	public String getDescricaoAnimal() {
 		return descricaoAnimal;
 	}
